@@ -1,0 +1,29 @@
+﻿@model HrSystem.ViewModel.LoginViewModel
+
+@{
+    Layout = "_LoginLayout";
+}
+<form asp-action="Login">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="inputBx">
+        <label class="text-white">username</label>
+    <input asp-for="username" class="form-control my-3" />
+    <span asp-validation-for="username" class="text-danger"></span>
+    
+              
+    </div>
+    <div class="inputBx password">
+    <label class="text-white">Password</label>        
+    <input asp-for="password" class="form-control my-3" />
+    <span asp-validation-for="password" class="text-danger"></span>
+    </div>
+    <div class="inputBx text-center">
+    <input type="submit" value="Log in" > 
+    </div>
+</form>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

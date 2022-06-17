@@ -1,0 +1,136 @@
+﻿
+
+@model GraduationProject.Models.Employee
+@{
+    SelectList s = new SelectList(ViewBag.d, "ID", "Name");
+}
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h1 class="p-4 my-2">
+            <img class="mx-3" src="https://img.icons8.com/external-flaticons-lineal-flat-icons/64/000000/external-form-customer-feedback-flaticons-lineal-flat-icons.png" />Edit Employee Form
+        </h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <h4 class="form-section">
+                    <i class="icon-user"></i> Personal Details
+                </h4>
+
+            </div>
+            <div class="form-group ">
+                <label asp-for="Name" class="col-md-3 label-control"></label>
+                <div class="col-md-9 mx-3">
+                    <input asp-for="Name" class="form-control" />
+
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="col-md-3 label-control"></label>
+                <div class="col-md-9 mx-3">
+                    <input asp-for="Address" class="form-control" />
+                </div>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                    <input asp-for="Phone" class="form-control" />
+                </div>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                    <select class="form-control" asp-for="Gender">
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                    </select>
+                </div>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nationality" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                    <input asp-for="Nationality" class="form-control" />
+                </div>
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NationalityID" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                    <input asp-for="NationalityID" class="form-control" />
+                </div>
+                <span asp-validation-for="NationalityID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDay" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                    <input asp-for="BirthDay" class="form-control" />
+                </div>
+                <span asp-validation-for="BirthDay" class="text-danger"></span>
+            </div>
+            <div>
+                <h4 class="form-section">
+                    <i class="icon-book-open"></i>Other Details
+                </h4>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="ContractDate" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                    <input asp-for="ContractDate" class="form-control" />
+                </div>
+                <span asp-validation-for="ContractDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttendanceTime" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                    <input asp-for="AttendanceTime" class="form-control" />
+                </div>
+                <span asp-validation-for="AttendanceTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeavingTime" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                    <input asp-for="LeavingTime" class="form-control" />
+                </div>
+                <span asp-validation-for="LeavingTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salary" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                    <input asp-for="Salary" class="form-control" />
+                </div>
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dept_ID" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                    <select asp-for="Dept_ID" class="form-control" asp-items="s"></select>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <span class="form-group mx-2">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </span>
+                <span class="form-group">
+                    <a asp-action="Index" class="btn btn-danger">Cancel</a>
+                </span>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

@@ -1,0 +1,57 @@
+﻿@model GraduationProject.Models.Attendance_Leaving
+@{
+    SelectList Emp = new SelectList(ViewBag.Emp, "ID", "Name");
+}
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h1 class="p-4 my-2"> <img class="mx-3" src="https://img.icons8.com/external-flaticons-lineal-flat-icons/64/000000/external-form-customer-feedback-flaticons-lineal-flat-icons.png"/>Attendance Form</h1>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12">
+        <form asp-controller="Attendance" asp-action="Insert">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                <input asp-for="Date" class="form-control" />
+                </div>
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttendanceTime" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                <input asp-for="AttendanceTime" class="form-control" />
+                </div>
+                <span asp-validation-for="AttendanceTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeavingTime" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                <input asp-for="LeavingTime" class="form-control" />
+                </div>
+                <span asp-validation-for="LeavingTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Emp_ID" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                <select asp-for="Emp_ID" class ="form-control" asp-items="Emp"></select>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <span class="form-group mx-2">
+                <input type="submit" value="ADD" class="btn btn-primary" />
+            </span>
+            <span class="form-group">
+                <a asp-controller="Attendance" asp-action="Index" class="btn btn-danger">Cancel</a>
+            </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

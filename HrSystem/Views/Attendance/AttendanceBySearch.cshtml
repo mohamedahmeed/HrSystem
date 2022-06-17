@@ -1,0 +1,55 @@
+﻿@model GraduationProject.ViewModels.SearchAttendanceViewModel
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h1 class="p-4 my-2">
+            <img class="mx-3" src="https://img.icons8.com/ios/50/000000/attendance-mark.png"/>Attendance</h1>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12">
+        <form asp-controller="Attendance" asp-action="Show">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Search" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                <input type="search" asp-for="Search" class="form-control" />
+                </div>
+                <span asp-validation-for="Search" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="From" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                <input asp-for="From" class="form-control" />
+                </div>
+                <span asp-validation-for="From" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To" class="col-md-3 control-label"></label>
+                <div class="col-md-9 mx-3">
+                <input asp-for="To" class="form-control" />
+                </div>
+                <span asp-validation-for="To" class="text-danger"></span>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <span class="mx-3">
+                    <input type="submit" value="Search" class="btn btn-primary" />
+
+                </span>
+                <span >
+                    <a class="btn btn-info" asp-controller="Attendance" asp-action="New">Add Attendance</a>
+                </span>
+                <span class="mx-3">
+                    <a class="btn btn-danger" asp-controller="Attendance" asp-action="Index">Cancel</a>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

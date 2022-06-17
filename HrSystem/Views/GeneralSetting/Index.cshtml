@@ -1,0 +1,81 @@
+﻿@model IEnumerable<GraduationProject.Models.GeneralSetting>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h1 class="p-4 my-2">
+            <img class="mx-3" src="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/64/000000/external-setting-advertising-xnimrodx-lineal-color-xnimrodx-2.png" />General Settings
+        </h1>
+    </div>
+</div>
+<div class="row">
+<div class="col-sm-12 col-md-12 col-lg-12 " >
+<a class="btn btn-danger" style="float:right;clear:both;" asp-controller="GeneralSetting" asp-action="Create">Add New General Settings</a>
+<div style="clear:both;"></div>
+<hr />
+</div>
+</div>
+@if ( TempData["Success"] != null )
+{
+<div class="alert alert-success text-center w-25 mx-auto" style="color:white;">@TempData["success"]</div>
+}
+
+<div class="row">
+<div class="col-sm-12 col-md-12 col-lg-12">
+<table class="table table-striped table-bordered zero-configuration">
+<thead>
+<tr>
+<th>
+@Html.DisplayNameFor(model => model.Extra)
+</th>
+<th>
+@Html.DisplayNameFor(model => model.Discount)
+</th>
+<th>
+@Html.DisplayNameFor(model => model.Dayoff_1)
+</th>
+<th>
+@Html.DisplayNameFor(model => model.Dayoff_2)
+</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+<tr>
+<td>
+@Html.DisplayFor(modelItem => item.Extra)
+</td>
+<td>
+@Html.DisplayFor(modelItem => item.Discount)
+</td>
+<td>
+@Html.DisplayFor(modelItem => item.Dayoff_1)
+</td>
+<td>
+@Html.DisplayFor(modelItem => item.Dayoff_2)
+</td>
+<td>
+<a class="btn btn-info" asp-controller="GeneralSetting" asp-action="Edit" asp-route-id="@item.ID" onclick="Edit()">Edit</a>
+<a class="btn btn-danger" asp-controller="GeneralSetting" asp-action="Delete" asp-route-id="@item.ID" onclick="Delete()">Delete</a>
+</td>
+</tr>
+}
+</tbody>
+</table>
+</div>
+</div>
+<script>
+function Edit(){
+var respond=confirm("Do You Want To Edit?!");
+if(!respond){
+event.preventDefault();
+}
+}
+
+ function Delete(){
+var respond=confirm("Do You Want To Delete?!");
+if(!respond){
+event.preventDefault();
+}
+}
+</script>

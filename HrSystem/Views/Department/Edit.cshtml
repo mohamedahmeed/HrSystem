@@ -1,0 +1,34 @@
+﻿@model GraduationProject.Models.Department
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h1 class="p-4 my-2">
+            <img class="mx-3" src="https://img.icons8.com/external-flaticons-lineal-flat-icons/64/000000/external-form-customer-feedback-flaticons-lineal-flat-icons.png"/>Edit Department</h1>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12">
+        <form asp-controller="Department" asp-action="SaveEdit" asp-route-id="@Model.ID">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label h5 ms-3">Name :</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="d-flex justify-content-center">
+                <span class="form-group mx-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </span>
+            <span>
+                <a class="btn btn-danger" asp-controller="Department" asp-action="Index">Cancel</a>
+            </span>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,87 @@
+﻿@model GraduationProject.Models.Employee
+
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h1 class="p-4 my-2">
+            <img class="mx-3" src="https://img.icons8.com/ios-filled/50/000000/men-age-group-5.png" />@Html.DisplayFor(model => model.Name)
+        </h1>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-6 col-md-6">
+
+        <div class="p-2">
+            <label class="h5">@Html.DisplayNameFor(model => model.Name):</label>
+            <span class="fs-5"> @Html.DisplayFor(model => model.Name)</span>
+        </div>
+        <div class="p-2">
+            <label class="h5"> @Html.DisplayNameFor(model => model.Address):</label>
+            <span class="fs-5">@Html.DisplayFor(model => model.Address)</span>
+        </div>
+        <div class="p-2">
+            <label class="h5">@Html.DisplayNameFor(model => model.Gender):</label>
+            <span class="fs-5">@Html.DisplayFor(model => model.Gender)</span>
+        </div>
+        <div class="p-2">
+            <label class="h5">@Html.DisplayNameFor(model => model.Phone):</label>
+            <span class="fs-5">@Html.DisplayFor(model => model.Phone)</span>
+        </div>
+        <div class="p-2">
+            <label class="h5">@Html.DisplayNameFor(model => model.BirthDay):</label>
+            <span class="fs-5">@Html.DisplayFor(model => model.BirthDay)</span>
+        </div>
+        <div class="p-2">
+            <label class="h5">@Html.DisplayNameFor(model => model.Nationality):</label>
+            <span class="fs-5">@Html.DisplayFor(model => model.Nationality)</span>
+        </div>
+        <div class="p-2">
+            <label class="h5">@Html.DisplayNameFor(model => model.NationalityID):</label>
+            <span class="fs-5">@Html.DisplayFor(model => model.NationalityID)</span>
+        </div>
+
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="p-2">
+            <label class="h5">@Html.DisplayNameFor(model => model.ContractDate):</label>
+            <span class="fs-5">@Html.DisplayFor(model => model.ContractDate)</span>
+        </div>
+        <div class="p-2">
+            <label class="h5">@Html.DisplayNameFor(model => model.AttendanceTime):</label>
+            <span class="fs-5">@Html.DisplayFor(model => model.AttendanceTime)</span>
+        </div>
+        <div class="p-2">
+            <label class="h5">@Html.DisplayNameFor(model => model.LeavingTime):</label>
+            <span class="fs-5">@Html.DisplayFor(model => model.LeavingTime)</span>
+        </div>
+        <div class="p-2">
+            <label class="h5">@Html.DisplayNameFor(model => model.Salary):</label>
+            <span class="fs-5">@Html.DisplayFor(model => model.Salary)</span>
+        </div>
+        <div class="p-2">
+            <label class="h5">@Html.DisplayNameFor(model => model.Dept):</label>
+            <span class="fs-5">@Html.DisplayFor(model => model.Dept.Name)</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center ">
+        <a class="btn btn-success my-5 mx-2 " asp-action="Edit" onclick="Edit()" asp-route-id="@Model.ID">Edit</a>
+        <a class="btn btn-danger my-5 " asp-action="Index">Back</a>
+    </div>
+
+
+</div>
+<script>
+    function Edit() {
+        var respond = confirm("Do you want to Edit ?!");
+        if (!respond) {
+            event.preventDefault();
+        }
+    }
+</script>

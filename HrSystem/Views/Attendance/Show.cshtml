@@ -1,0 +1,114 @@
+﻿
+@model List<GraduationProject.Models.Attendance_Leaving>
+<style>
+    .print:hover{
+        cursor:pointer;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h1 class="p-4 my-2">
+            <img class="mx-3" src="https://img.icons8.com/ios/50/000000/attendance-mark.png"/>Attendance</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+<div class="text-center my-2">
+    <span class="mx-2">
+        <a asp-controller="Attendance" asp-action="AttendanceBySearch">
+        <img style="width:50px;height50px;" src="/Images/icons8-search.gif" />
+        </a>
+    </span>
+    <span class="mx-2">
+        <a  asp-controller="Attendance" asp-action="New">
+            <img src="https://img.icons8.com/ios/50/000000/add--v1.png"/></a>
+    </span>
+    <span class="mx-2">
+        <img class="print" src="https://img.icons8.com/ios-glyphs/30/000000/print.png" onclick="print()"/>
+
+    </span>
+</div>
+</div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        
+<table class="table table-striped table-bordered zero-configuration">
+    <thead  >
+        <tr>
+           
+            <th>
+                 Department
+            </th>
+            <th>
+                EmployeeName
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                AttendanceTime
+            </th>
+            <th>
+                LeavingTime
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model) {
+        <tr id="frame">
+            
+            <td>
+                @item.Emp.Dept.Name
+            </td>
+            <td>
+                @item.Emp.Name
+            </td>
+            <td>
+                @item.Date
+            </td>
+            <td>
+                @item.AttendanceTime
+            </td>
+            <td>
+                @item.LeavingTime
+            </td>
+            <td>
+                <a class="btn btn-info" asp-controller="Attendance" asp-action="Edit" asp-route-id="@item.ID" onclick="Edit()">Edit</a>
+                <a class="btn btn-danger" asp-controller="Attendance" asp-action="Delete" asp-route-id="@item.ID" onclick="Delete()">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+</div>
+<script>
+    function Edit(){
+        var respond=confirm("Do You Want To Edit?!");
+        if(!respond){
+            event.preventDefault();
+        }
+    }
+
+    function Delete(){
+        var respond=confirm("Do You Want To Delete?!");
+        if(!respond){
+            event.preventDefault();
+        }
+    }
+</script>
+@*<script>
+function print() {
+var divContents = document.getElementById("frame").innerHTML;
+//var prnt = window.open('', '', 'height=500, width=800');
+//prnt .document.write(`<html><head><title>Print Page</title>`);
+//prnt .document.write(`</head><body>`);
+//prnt .document.write(divContents.innerHTML);
+//prnt .document.write(`</body></html>`);
+prnt .print();
+}
+</script>*@

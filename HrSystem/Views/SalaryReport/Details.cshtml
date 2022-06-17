@@ -1,0 +1,174 @@
+﻿@using GraduationProject.Models;
+@model List<Attendance_Leaving>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h1 class="p-4 my-2">
+            <img class="mx-3" src="https://img.icons8.com/ios-filled/50/000000/men-age-group-5.png" />Personal Information
+        </h1>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6  ">
+        <div class="p-2">
+            <label class="h5">Employee Name :</label>
+            <span class="fs-5">@ViewBag.Emp.Name</span>
+        </div>
+
+        <div class="p-2">
+            <label class="h5">Department :</label>
+            <span class="fs-5">@ViewBag.Emp.Dept.Name</span>
+        </div>
+
+        <div class="p-2">
+            <label class="h5">Phone :</label>
+            <span class="fs-5">@ViewBag.Emp.Phone</span>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6  ">
+        <div class="p-2">
+            <label class="h5">Salary :</label>
+            <span class="fs-5">@ViewBag.Emp.Salary</span>
+        </div>
+        <div class="p-2">
+            <label class="h5">Attendance Time :</label>
+            <span class="fs-5">@ViewBag.Emp.AttendanceTime</span>
+        </div>
+        <div class="p-2">
+            <label class="h5">Leaving Time :</label>
+            <span class="fs-5">@ViewBag.Emp.LeavingTime</span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h1 class="p-4 my-2">
+            <img class="mx-3" src="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/64/000000/external-setting-advertising-xnimrodx-lineal-color-xnimrodx-2.png" />General Settings
+        </h1>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6  ">
+        <div class="p-2">
+            <label class="h5">Extra :</label>
+            <span class="fs-5">@ViewBag.General.Extra</span>
+        </div>
+
+        <div class="p-2">
+            <label class="h5">Discount :</label>
+            <span class="fs-5">@ViewBag.General.Discount</span>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6  ">
+        <div class="p-2">
+            <label class="h5">DayOff 1 :</label>
+            <span class="fs-5">@ViewBag.General.Dayoff_1</span>
+        </div>
+
+        <div class="p-2">
+            <label class="h5">DayOff 2 :</label>
+            <span class="fs-5">@ViewBag.General.Dayoff_2</span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h1 class="p-4 my-2">
+            <img class="mx-3" src="https://img.icons8.com/pastel-glyph/64/000000/sunbathe.png" />Official Holidays
+        </h1>
+        <hr />
+    </div>
+</div>
+<div class="row">
+
+    @foreach (var item in ViewBag.Holidays)
+    {<div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="p-2">
+                <label class="h5">Name :</label>
+                <span class="fs-5">@item.Name</span>
+            </div>
+        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="p-2">
+                                <label class="h5">Date :</label>
+                                <span class="fs-5">@item.Date</span>
+                            </div>
+                        </div>
+
+                    }
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h1 class="p-4 my-2">
+            <img class="mx-3" src="https://img.icons8.com/ios/50/000000/attendance-mark.png" />Attendance Information
+        </h1>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+    </div>
+    <table class="table w-100">
+        <thead>
+            <tr>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Attendance 
+                </th>
+                <th>
+                    Leaving 
+                </th>
+                <th>
+                    Deduction hours
+                </th>
+                <th>
+                    Bonus Hours
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Date
+                    </td>
+                    <td>
+                        @item.AttendanceTime
+                    </td>
+
+                    <td>
+                        @item.LeavingTime
+
+                    </td>
+                    <td>
+                        @if (TimeSpan.Parse(item.AttendanceTime).Hours > TimeSpan.Parse(ViewBag.Emp.AttendanceTime).Hours)
+                        {
+                            <span>@(TimeSpan.Parse(item.AttendanceTime).Hours - TimeSpan.Parse(ViewBag.Emp.AttendanceTime).Hours)</span>
+                        }
+
+                    </td>
+                    <td>
+                        @if (TimeSpan.Parse(item.LeavingTime).Hours > TimeSpan.Parse(ViewBag.Emp.LeavingTime).Hours)
+                        {
+                            <span>@(TimeSpan.Parse(item.LeavingTime).Hours - TimeSpan.Parse(ViewBag.Emp.LeavingTime).Hours)</span>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="form-group " style="margin-left:80%">
+        <div>
+            <a class="btn btn-info" href="http://localhost:62747/SalaryReport/CreateReport/?Search=@ViewBag.Rep.Search&Month=@ViewBag.Rep.Month&Year=@ViewBag.Rep.Year">Go To Report</a>
+
+        </div>
+
+
+    </div>
+</div>
+

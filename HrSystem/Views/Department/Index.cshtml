@@ -1,0 +1,61 @@
+﻿@model IEnumerable<GraduationProject.Models.Department>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+
+        <h1 class="p-4 my-2">
+            <img class="mx-3"  src="https://img.icons8.com/ios-glyphs/30/000000/department.png"/>Departments</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 " >
+        <a class="btn btn-danger" style="float:right;clear:both;" asp-controller="Department" asp-action="New">ADD New Department</a>
+        <div style="clear:both;"></div>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <table class="table table-striped table-bordered zero-configuration">
+    <thead>
+        <tr>
+            <th class="h4">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="h5">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a class="btn btn-info" asp-controller="Department" asp-action="Edit" asp-route-id="@item.ID" onclick="HireEvent()">Edit</a> |
+                <a class="btn btn-danger" asp-controller="Department" asp-action="Delete" asp-route-id="@item.ID" onclick="Delete()">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    </div>
+</div>
+
+<script>
+function HireEvent(){
+    var respond=confirm("Do You Want To Edit?!");
+    if(!respond){
+        event.preventDefault();
+    }
+}
+
+function Delete(){
+    var respond=confirm("Do You Want To Delete?!");
+    if(!respond){
+        event.preventDefault();
+    }
+}
+</script>
